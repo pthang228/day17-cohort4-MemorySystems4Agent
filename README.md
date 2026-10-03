@@ -165,6 +165,17 @@ pytest src/test_agents.py -v
 
 Benchmark cần in ra hai bảng: **Standard Benchmark** và **Long-Context Stress Benchmark**. Mỗi bảng so sánh Baseline với Advanced theo đủ 6 cột trong phần "Chỉ số benchmark cần hiểu".
 
+### Kết quả bài làm (offline, deterministic)
+
+| Benchmark | Agent | Agent tokens only | Prompt tokens processed | Cross-session recall | Response quality | Memory growth (bytes) | Compactions |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Standard | Baseline | 4,030 | 23,860 | 0.00 | 0.10 | 0 | 0 |
+| Standard | Advanced | 4,094 | 45,435 | 1.00 | 1.00 | 586 | 0 |
+| Stress | Baseline | 2,827 | 24,304 | 0.00 | 0.10 | 0 | 0 |
+| Stress | Advanced | 2,945 | 14,330 | 1.00 | 1.00 | 454 | 4 |
+
+Phân tích trade-off, bảng sweep ngưỡng compact và phần bonus (confidence threshold, conflict handling, entity extraction, memory decay): xem [`REPORT.md`](REPORT.md). Có thể cài dependency bằng `pip install -r requirements.txt`, và cấu hình mẫu cho chế độ live nằm trong `.env.example`.
+
 ## Cách dùng repo này
 
 Nếu các bạn là sinh viên:
